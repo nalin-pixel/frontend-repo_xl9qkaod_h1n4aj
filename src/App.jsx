@@ -69,17 +69,57 @@ function Hero() {
             </motion.ul>
           </div>
 
-          {/* Right: Interactive Spline scene */}
+          {/* Right: Interactive Spline scene with extra 3D accents */}
           <div className="relative h-72 sm:h-96 lg:h-[520px]">
             <div className="absolute inset-0 rounded-2xl ring-1 ring-black/5 bg-gradient-to-br from-indigo-50 via-white to-blue-50" />
             <div className="absolute inset-0 rounded-2xl overflow-hidden">
               <Spline
-                scene="https://prod.spline.design/8fw9Z-c-rqW3nWBN/scene.splinecode"
+                scene="https://prod.spline.design/N8g2VNcx8Rycz93J/scene.splinecode"
                 style={{ width: '100%', height: '100%' }}
               />
             </div>
             {/* Soft light bloom that does not block interactions */}
             <div className="pointer-events-none absolute inset-0 rounded-2xl bg-gradient-to-t from-white/30 via-transparent to-transparent" />
+
+            {/* Iridescent floating spheres (visual 3D accents) - non-blocking */}
+            <div className="pointer-events-none absolute inset-0">
+              <motion.span
+                initial={{ opacity: 0, scale: 0.8, y: 20 }}
+                animate={{ opacity: 0.9, scale: 1, y: 0 }}
+                transition={{ duration: 0.8, ease: 'easeOut', delay: 0.2 }}
+                className="absolute left-6 top-8 h-10 w-10 rounded-full"
+                style={{
+                  background:
+                    'radial-gradient(closest-side, rgba(168, 85, 247, 0.9), rgba(59, 130, 246, 0.65) 60%, rgba(2, 6, 23, 0.05))',
+                  filter: 'blur(0.2px)',
+                  boxShadow: '0 10px 25px rgba(59,130,246,0.25)',
+                }}
+              />
+              <motion.span
+                initial={{ opacity: 0, scale: 0.8, y: -10 }}
+                animate={{ opacity: 0.8, scale: 1, y: 0 }}
+                transition={{ duration: 0.9, ease: 'easeOut', delay: 0.3 }}
+                className="absolute right-10 bottom-12 h-16 w-16 rounded-full"
+                style={{
+                  background:
+                    'radial-gradient(closest-side, rgba(34, 211, 238, 0.9), rgba(168, 85, 247, 0.6) 55%, rgba(2, 6, 23, 0.05))',
+                  filter: 'blur(0.4px)',
+                  boxShadow: '0 14px 28px rgba(168,85,247,0.25)',
+                }}
+              />
+              <motion.span
+                initial={{ opacity: 0, scale: 0.8, x: -10 }}
+                animate={{ opacity: 0.75, scale: 1, x: 0 }}
+                transition={{ duration: 1, ease: 'easeOut', delay: 0.4 }}
+                className="absolute left-1/2 top-1/2 h-6 w-6 -translate-x-1/2 -translate-y-1/2 rounded-full"
+                style={{
+                  background:
+                    'radial-gradient(closest-side, rgba(99, 102, 241, 0.9), rgba(34, 197, 94, 0.5) 60%, rgba(2, 6, 23, 0.05))',
+                  filter: 'blur(0.3px)',
+                  boxShadow: '0 8px 18px rgba(99,102,241,0.25)',
+                }}
+              />
+            </div>
           </div>
         </div>
       </div>
