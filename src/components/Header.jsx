@@ -50,10 +50,7 @@ export default function Header() {
             {/* Tiny highlight ring */}
             <span className="pointer-events-none absolute inset-0 rounded-xl ring-1 ring-white/30" />
           </div>
-          <div className="hidden sm:block">
-            <h1 className="text-lg font-semibold tracking-tight text-slate-800">Trust & Fairness</h1>
-            <p className="text-xs text-slate-500">Transparency • Compliance</p>
-          </div>
+          {/* Removed brand text per request */}
         </a>
 
         {/* Desktop nav */}

@@ -152,7 +152,7 @@ export default function App() {
 
       <footer id="reports" className="border-t border-slate-200 bg-white">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-6 text-sm text-slate-500 flex flex-wrap items-center justify-between gap-3">
-          <p>© {new Date().getFullYear()} Trust & Fairness Platform</p>
+          <p>© {new Date().getFullYear()} Platform</p>
           <div className="flex items-center gap-4">
             <a className="hover:text-slate-700" href="#">Privacy</a>
             <a className="hover:text-slate-700" href="#">Compliance</a>
