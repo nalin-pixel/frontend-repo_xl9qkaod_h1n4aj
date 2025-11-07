@@ -4,6 +4,8 @@ import Spline from '@splinetool/react-spline';
 import Header from './components/Header';
 import StatsOverview from './components/StatsOverview';
 import DecisionFeed from './components/DecisionFeed';
+import PrivacyCompliance from './components/PrivacyCompliance';
+import StatusPage from './components/StatusPage';
 
 // Lazy-load heavier visualizations to make initial paint faster
 const ChartsPanel = lazy(() => import('./components/ChartsPanel'));
@@ -150,13 +152,19 @@ export default function App() {
         </Suspense>
       </div>
 
+      {/* Privacy & Compliance section */}
+      <PrivacyCompliance />
+
+      {/* Public Status page section */}
+      <StatusPage />
+
       <footer id="reports" className="border-t border-slate-200 bg-white">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-6 text-sm text-slate-500 flex flex-wrap items-center justify-between gap-3">
-          <p>© {new Date().getFullYear()} Platform</p>
+          <p>© 2025 @ vibeforge · made by team vibeforge</p>
           <div className="flex items-center gap-4">
-            <a className="hover:text-slate-700" href="#">Privacy</a>
-            <a className="hover:text-slate-700" href="#">Compliance</a>
-            <a className="hover:text-slate-700" href="#">Status</a>
+            <a className="hover:text-slate-700" href="#privacy">Privacy</a>
+            <a className="hover:text-slate-700" href="#compliance">Compliance</a>
+            <a className="hover:text-slate-700" href="#status">Status</a>
           </div>
         </div>
       </footer>
