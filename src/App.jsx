@@ -10,7 +10,7 @@ const ChartsPanel = lazy(() => import('./components/ChartsPanel'));
 
 function Hero() {
   return (
-    <section className="relative overflow-hidden">
+    <section id="overview" className="relative overflow-hidden">
       {/* Subtle gradient vignette that doesn't block Spline interactions */}
       <div className="pointer-events-none absolute inset-0 bg-gradient-to-b from-blue-50/60 via-transparent to-transparent" />
 
@@ -23,7 +23,7 @@ function Hero() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, ease: 'easeOut' }}
               className="text-3xl sm:text-5xl font-semibold tracking-tight text-slate-900"
-            >
+           >
               Enterprise AI Transparency & Compliance
             </motion.h2>
             <motion.p
@@ -41,12 +41,12 @@ function Hero() {
               transition={{ duration: 0.6, delay: 0.15, ease: 'easeOut' }}
               className="mt-6 flex flex-wrap gap-3"
             >
-              <button className="rounded-md bg-blue-600 px-4 py-2 text-white shadow-sm transition hover:translate-y-[-1px] hover:bg-blue-700 active:translate-y-0">
+              <a href="#sandbox" className="rounded-md bg-blue-600 px-4 py-2 text-white shadow-sm transition hover:translate-y-[-1px] hover:bg-blue-700 active:translate-y-0">
                 Start Audit Sandbox
-              </button>
-              <button className="rounded-md border border-slate-200 bg-white px-4 py-2 text-slate-800 shadow-sm transition hover:bg-slate-50">
-                View API Docs
-              </button>
+              </a>
+              <a href="#dashboards" className="rounded-md border border-slate-200 bg-white px-4 py-2 text-slate-800 shadow-sm transition hover:bg-slate-50">
+                View Dashboards
+              </a>
             </motion.div>
 
             <motion.ul
@@ -132,21 +132,25 @@ export default function App() {
     <div className="min-h-screen bg-slate-50 text-slate-900">
       <Header />
       <Hero />
-      <StatsOverview />
-      <DecisionFeed />
+      <div id="decisions">
+        <StatsOverview />
+        <DecisionFeed />
+      </div>
 
       {/* Defer heavy charts until needed for faster initial load */}
-      <Suspense
-        fallback={
-          <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-10">
-            <div className="h-64 w-full animate-pulse rounded-xl bg-white shadow-sm ring-1 ring-black/5" />
-          </div>
-        }
-      >
-        <ChartsPanel />
-      </Suspense>
+      <div id="dashboards">
+        <Suspense
+          fallback={
+            <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-10">
+              <div className="h-64 w-full animate-pulse rounded-xl bg-white shadow-sm ring-1 ring-black/5" />
+            </div>
+          }
+        >
+          <ChartsPanel />
+        </Suspense>
+      </div>
 
-      <footer className="border-t border-slate-200 bg-white">
+      <footer id="reports" className="border-t border-slate-200 bg-white">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-6 text-sm text-slate-500 flex flex-wrap items-center justify-between gap-3">
           <p>© {new Date().getFullYear()} Trust & Fairness Platform</p>
           <div className="flex items-center gap-4">
@@ -156,6 +160,9 @@ export default function App() {
           </div>
         </div>
       </footer>
+
+      {/* Hidden anchor for sandbox CTA */}
+      <div id="sandbox" className="sr-only" />
     </div>
   );
 }
